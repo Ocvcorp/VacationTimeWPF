@@ -29,7 +29,8 @@ namespace VacationTimeWPF
 
         private void FirstDay_LostFocus(object sender, RoutedEventArgs e)
         {
-            FinishDay.Text = FirstDay.SelectedDate.ToString();
+            if (FinishDay.SelectedDate < FirstDay.SelectedDate)
+                FinishDay.Text = FirstDay.SelectedDate.ToString();
         }
         private void FinishDay_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -39,8 +40,14 @@ namespace VacationTimeWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string datePeriod;
             VacationPeriodCalendar.DisplayDateStart = FirstDay.SelectedDate;
             VacationPeriodCalendar.DisplayDateEnd = FinishDay.SelectedDate;
+            datePeriod = (((DateTime)FinishDay.SelectedDate)
+                        .Subtract((DateTime)FirstDay.SelectedDate)
+                        .Days+2).ToString();
+
+            VacationPeriodTextBox.Text = datePeriod;
         }
     }
 }
