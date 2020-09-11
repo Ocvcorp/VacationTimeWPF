@@ -5,11 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VacationTimeWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="657.807" Width="535.744">
-    <Grid Margin="0,0,2,0" Height="627" VerticalAlignment="Top">
-        <DatePicker x:Name="FirstDay" HorizontalAlignment="Left" Margin="49,53,0,0" VerticalAlignment="Top" Height="43" Width="326" LostFocus="FirstDay_LostFocus" FontSize="16"/>
-        <DatePicker x:Name="FinishDay" HorizontalAlignment="Left" Margin="49,136,0,0" VerticalAlignment="Top" Height="43" Width="326" LostFocus="FinishDay_LostFocus" FontSize="16"/>
-        <Calendar x:Name="VacationPeriodCalendar" HorizontalAlignment="Left" Height="168" Margin="173,318,0,0" VerticalAlignment="Top" Width="180" FontSize="14" RenderTransformOrigin="0.491,0.492">
+        Title="В отпуск!" Height="639.14" Width="535.744">
+    <Grid Margin="0,0,2,0" Height="608" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+        <Grid.OpacityMask>
+            <RadialGradientBrush>
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.OpacityMask>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="327" Margin="32,255,0,0" VerticalAlignment="Top" Width="464"/>
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="184" Margin="32,38,0,0" VerticalAlignment="Top" Width="464"/>
+        <DatePicker x:Name="FirstDay" HorizontalAlignment="Left" Margin="49,71,0,0" VerticalAlignment="Top" Height="43" Width="418" LostFocus="FirstDay_LostFocus" FontSize="16"/>
+        <DatePicker x:Name="FinishDay" HorizontalAlignment="Left" Margin="49,154,0,0" VerticalAlignment="Top" Height="43" Width="418" LostFocus="FinishDay_LostFocus" FontSize="16"/>
+        <Calendar x:Name="VacationPeriodCalendar" HorizontalAlignment="Left" Height="168" Margin="270,382,0,0" VerticalAlignment="Top" Width="180" FontSize="14" RenderTransformOrigin="0.491,0.492">
             <Calendar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1.2" ScaleY="1.15"/>
@@ -19,8 +28,18 @@
                 </TransformGroup>
             </Calendar.RenderTransform>
         </Calendar>
-        <Button x:Name="Button" Content="Button" HorizontalAlignment="Left" Height="42" Margin="49,221,0,0" VerticalAlignment="Top" Width="326" Click="Button_Click"/>
-        <TextBlock x:Name="VacationPeriodTextBox" HorizontalAlignment="Left" Margin="49,312,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="182" Width="94"/>
+        <Button x:Name="Button" Content="Рассчитать" HorizontalAlignment="Left" Height="42" Margin="49,283,0,0" VerticalAlignment="Top" Width="418" Click="Button_Click"/>
+        <TextBlock x:Name="VacationPeriodTextBox" HorizontalAlignment="Left" Margin="49,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="183" Width="182" FontSize="48" FontWeight="Bold" TextAlignment="Center">
+            <TextBlock.Foreground>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF3D22E8" Offset="0"/>
+                    <GradientStop Color="#FF527AE6" Offset="0.747"/>
+                </RadialGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <Label Content="Первый день отпуска" HorizontalAlignment="Left" Height="28" Margin="49,38,0,0" VerticalAlignment="Top" Width="418"/>
+        <Label Content="Последний день отпуска" HorizontalAlignment="Left" Height="28" Margin="49,126,0,0" VerticalAlignment="Top" Width="418"/>
+        <Label Content="Длительность отпуска" HorizontalAlignment="Left" Height="28" Margin="49,255,0,0" VerticalAlignment="Top" Width="418"/>
 
     </Grid>
 </Window>

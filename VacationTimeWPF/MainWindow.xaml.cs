@@ -40,14 +40,29 @@ namespace VacationTimeWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string datePeriod;
             VacationPeriodCalendar.DisplayDateStart = FirstDay.SelectedDate;
             VacationPeriodCalendar.DisplayDateEnd = FinishDay.SelectedDate;
-            datePeriod = (((DateTime)FinishDay.SelectedDate)
-                        .Subtract((DateTime)FirstDay.SelectedDate)
-                        .Days+2).ToString();
+            //производим операции с компонентами даты, 
+            //добавляем 1 день, поскольку он включатеся в период отпуска
+            TimeSpan datePeriod = ((DateTime)FinishDay.SelectedDate).Date
+                        .AddDays(1)
+                        .Subtract(((DateTime)FirstDay.SelectedDate).Date);
 
-            VacationPeriodTextBox.Text = datePeriod;
+            VacationPeriodTextBox.Text = datePeriod.Days.ToString()
+                +"\n"+ RusDayDeclension(Int32.Parse(datePeriod.Days.ToString()));
+        }
+
+        private string RusDayDeclension(int dayNum)
+        {
+            string returnVal = "";
+            int mod10 = dayNum % 10;
+            if ((mod10 == 0) || (mod10 >= 5 && mod10 <= 9) || (dayNum >= 11 && dayNum <= 14))
+                returnVal = "дней";
+            else if (mod10 == 1)
+                returnVal = "день";
+            else
+                returnVal = "дня";
+            return returnVal;
         }
     }
 }
