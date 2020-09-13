@@ -21,10 +21,12 @@ namespace VacationTimeWPF
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        {            
             InitializeComponent();
             FirstDay.Text = DateTime.Now.ToString();
             FinishDay.Text = DateTime.Now.ToString();
+            //загружаем файл с датами праздников
+
         }
 
         private void FirstDay_LostFocus(object sender, RoutedEventArgs e)
