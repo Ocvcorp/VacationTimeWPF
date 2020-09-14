@@ -30,7 +30,7 @@
             </Calendar.RenderTransform>
         </Calendar>
         <Button x:Name="Button" Content="Рассчитать" HorizontalAlignment="Left" Height="42" Margin="49,302,0,0" VerticalAlignment="Top" Width="182" Click="Button_Click" FontSize="20"/>
-        <TextBlock x:Name="VacationPeriodTextBox" HorizontalAlignment="Left" Margin="49,363,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="209" Width="418" FontSize="72" FontWeight="Bold" TextAlignment="Center" Text="5">
+        <TextBlock x:Name="VacationPeriodTextBox" HorizontalAlignment="Left" Margin="49,363,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="209" Width="418" FontSize="72" FontWeight="Bold" TextAlignment="Center">
             <TextBlock.Foreground>
                 <RadialGradientBrush>
                     <GradientStop Color="#FF3D22E8" Offset="0"/>
@@ -42,7 +42,7 @@
         <Label Content="Последний день отпуска" HorizontalAlignment="Left" Height="28" Margin="49,139,0,0" VerticalAlignment="Top" Width="418"/>
         <Label Content="Длительность отпуска" HorizontalAlignment="Left" Height="28" Margin="49,274,0,0" VerticalAlignment="Top" Width="418"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="212" Margin="530,38,0,0" VerticalAlignment="Top" Width="305">
-            <Calendar x:Name="HolidayCalender" Margin="102,27,9,9" SelectionMode="MultipleRange"/>
+            <Calendar x:Name="HolidayCalender" Margin="102,27,9,9" DisplayDate="01.2020" SelectionMode="MultipleRange"/>
         </Border>
         <Label Content="Праздничные дни" HorizontalAlignment="Left" Height="28" Margin="548,38,0,0" VerticalAlignment="Top" Width="267"/>
 

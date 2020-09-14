@@ -18,8 +18,13 @@ namespace VacationTimeWPF
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public class Holidays
     {
+        public int id { get; set; }
+        public DateTime dateTime { get; set; }
+    }
+    public partial class MainWindow : Window
+    {        
         public MainWindow()
         {            
             InitializeComponent();
