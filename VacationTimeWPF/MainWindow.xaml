@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VacationTimeWPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="VacationTimeWPF.MainWindow"
         mc:Ignorable="d"
-        Title="В отпуск!" Height="656.473" Width="874.411">
+        Title="В отпуск!" Height="656.473" Width="1193.078">
     <Grid Margin="0,0,2,0" Height="621" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
         <Grid.OpacityMask>
             <RadialGradientBrush>
@@ -45,6 +45,15 @@
             <Calendar x:Name="HolidayCalender" Margin="102,27,9,9" DisplayDate="01.2020" SelectionMode="MultipleRange"/>
         </Border>
         <Label Content="Праздничные дни" HorizontalAlignment="Left" Height="28" Margin="548,38,0,0" VerticalAlignment="Top" Width="267"/>
+        <ListView HorizontalAlignment="Left" Height="121" Margin="876,98,0,0" VerticalAlignment="Top" Width="226">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastHolidayMounth}" Width="120">последний месяц</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastHolidayYear}" Width="100">год</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="отмеченные даты" HorizontalAlignment="Left" Height="28" Margin="876,65,0,0" VerticalAlignment="Top" Width="226"/>
 
     </Grid>
 </Window>
