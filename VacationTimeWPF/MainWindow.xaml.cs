@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,19 +19,19 @@ namespace VacationTimeWPF
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public class Holidays
-    {
-        public int id { get; set; }
-        public DateTime dateTime { get; set; }
-    }
     public partial class MainWindow : Window
     {        
         public MainWindow()
         {            
             InitializeComponent();
             FirstDay.Text = DateTime.Now.ToString();
-            FinishDay.Text = DateTime.Now.ToString();
-            //загружаем файл с датами праздников
+            FinishDay.Text = DateTime.Now.ToString();          
+            //загружаем из файла с даты праздников
+            if (LoadHolyDays(new StreamReader("holidays.txt"), 
+                            out List<DateTime> holydaysList))
+            {
+
+            }
 
         }
 
@@ -70,6 +71,40 @@ namespace VacationTimeWPF
             else
                 returnVal = "дня";
             return returnVal;
+        }
+
+        private bool LoadHolyDays(StreamReader srFile, out List<DateTime> dates)
+        {
+            dates = new List<DateTime>();
+            string fileString;
+            try 
+            {
+                while (!srFile.EndOfStream)
+                {
+                    fileString = srFile.ReadLine();
+                    dates.Add(DateTime.Parse(fileString));
+                }
+                return true;
+            }
+            catch (FileNotFoundException e)
+            {
+                return false;
+            }
+        }
+
+        private void SaveHolyDays(StreamWriter swFile, List<DateTime> dates)
+        {
+            try
+            {
+                foreach (DateTime date in dates)
+                {
+                    swFile.WriteLine(dates.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

@@ -52,7 +52,7 @@
         </ListView>
         <Button x:Name="AddHolidaysButton" Content="Добавить" HorizontalAlignment="Left" Height="30" Margin="257,274,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
         <Button x:Name="RemoveHolidaysButton_Copy" Content="Исключить" HorizontalAlignment="Left" Height="30" Margin="409,271,0,0" VerticalAlignment="Top" Width="73" Click="Button_Click"/>
-        <Calendar HorizontalAlignment="Left" Margin="52,274,0,0" VerticalAlignment="Top"/>
+        <Calendar x:Name="HolidayCalendar" HorizontalAlignment="Left" Margin="52,274,0,0" VerticalAlignment="Top" DisplayDate="01.2020"/>
 
     </Grid>
 </Window>
