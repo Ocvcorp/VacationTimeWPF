@@ -25,13 +25,18 @@ namespace VacationTimeWPF
         {            
             InitializeComponent();
             FirstDay.Text = DateTime.Now.ToString();
-            FinishDay.Text = DateTime.Now.ToString();          
-            //загружаем из файла с даты праздников
-            if (LoadHolyDays(new StreamReader("holidays.txt"), 
+            FinishDay.Text = DateTime.Now.ToString();
+            //загружаем из файла даты праздников
+             
+            if (LoadHolyDays("holidays.txt", 
                             out List<DateTime> holydaysList))
             {
-
+                
             }
+            
+            
+            
+
 
         }
 
@@ -73,12 +78,14 @@ namespace VacationTimeWPF
             return returnVal;
         }
 
-        private bool LoadHolyDays(StreamReader srFile, out List<DateTime> dates)
+        private bool LoadHolyDays(string filePath, out List<DateTime> dates)
         {
-            dates = new List<DateTime>();
+            
+            dates = new List<DateTime>();            
             string fileString;
             try 
             {
+                StreamReader srFile = new StreamReader(filePath);
                 while (!srFile.EndOfStream)
                 {
                     fileString = srFile.ReadLine();
