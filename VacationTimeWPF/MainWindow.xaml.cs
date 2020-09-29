@@ -20,16 +20,16 @@ namespace VacationTimeWPF
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {        
+    {
+        public List<DateTime> holydaysList=new List<DateTime>();
         public MainWindow()
         {            
             InitializeComponent();
             FirstDay.Text = DateTime.Now.ToString();
             FinishDay.Text = DateTime.Now.ToString();
-            //загружаем из файла даты праздников
-             
-            if (LoadHolyDays("holidays.txt", 
-                            out List<DateTime> holydaysList))
+            
+            //загружаем из файла даты праздников 
+            if (LoadHolyDays("holidays.txt", out holydaysList))
             {
                 
             }
@@ -51,6 +51,13 @@ namespace VacationTimeWPF
                 FinishDay.Text = FirstDay.SelectedDate.ToString();
         }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var date in HolidayCalendar.SelectedDates)
+            {
+                holydaysList.Add(date);
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             VacationPeriodCalendar.DisplayDateStart = FirstDay.SelectedDate;
