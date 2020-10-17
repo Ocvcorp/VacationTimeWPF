@@ -1,0 +1,22 @@
+﻿<Window x:Class="AddHolidays4VTWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AddHolidays4VTWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="325.825" Width="530.425">
+    <Grid>
+        <ListView x:Name="holidayList" HorizontalAlignment="Left" Height="247" Margin="257,10,0,0" VerticalAlignment="Top" Width="255">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="addHolidaysButton" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="194,83,0,0" VerticalAlignment="Top" Width="58" Click="addHolidaysButton_Click"/>
+        <Button x:Name="addHolidaysButton_Copy" Content="Сохранить даты" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="179"/>
+        <Calendar x:Name="holidayCalendar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectionMode="MultipleRange" DisplayDate="2020-01"/>
+
+    </Grid>
+</Window>
