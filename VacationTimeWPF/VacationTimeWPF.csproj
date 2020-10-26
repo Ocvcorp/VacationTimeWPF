@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AddHolidays4VTWPF\AddHolidays4VTWPF.csproj">
+      <Project>{B19D1937-9049-4A28-A76A-4F722E2CC0F1}</Project>
+      <Name>AddHolidays4VTWPF</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VacationTimeWPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="VacationTimeWPF.MainWindow"
         mc:Ignorable="d"
-        Title="В отпуск!" Height="815.473" Width="530.078">
+        Title="В отпуск!" Height="668.807" Width="530.078">
     <Grid Margin="0,0,2,-2" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
         <Grid.OpacityMask>
             <RadialGradientBrush>
@@ -14,12 +14,12 @@
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
         </Grid.OpacityMask>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="256" Margin="32,484,0,0" VerticalAlignment="Top" Width="464"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="339" Margin="32,272,0,0" VerticalAlignment="Top" Width="464"/>
 
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="422" Margin="32,38,0,0" VerticalAlignment="Top" Width="464"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="199" Margin="32,38,0,0" VerticalAlignment="Top" Width="464"/>
         <DatePicker x:Name="FirstDay" HorizontalAlignment="Left" Margin="49,71,0,0" VerticalAlignment="Top" Height="43" Width="433" LostFocus="FirstDay_LostFocus" FontSize="16"/>
         <DatePicker x:Name="FinishDay" HorizontalAlignment="Left" Margin="49,167,0,0" VerticalAlignment="Top" Height="43" Width="433" LostFocus="FinishDay_LostFocus" FontSize="16"/>
-        <Calendar x:Name="VacationPeriodCalendar" HorizontalAlignment="Left" Height="168" Margin="276,532,0,0" VerticalAlignment="Top" Width="180" FontSize="14" RenderTransformOrigin="0.491,0.492">
+        <Calendar x:Name="VacationPeriodCalendar" HorizontalAlignment="Left" Height="168" Margin="276,320,0,0" VerticalAlignment="Top" Width="180" FontSize="14" RenderTransformOrigin="0.491,0.492">
             <Calendar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1.3" ScaleY="1.3"/>
@@ -29,8 +29,8 @@
                 </TransformGroup>
             </Calendar.RenderTransform>
         </Calendar>
-        <Button x:Name="Button" Content="Рассчитать" HorizontalAlignment="Left" Height="42" Margin="49,512,0,0" VerticalAlignment="Top" Width="182" Click="Button_Click" FontSize="20"/>
-        <TextBlock x:Name="VacationPeriodTextBox" HorizontalAlignment="Left" Margin="49,573,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="149" Width="182" FontSize="36" FontWeight="Bold" TextAlignment="Center">
+        <Button x:Name="Button" Content="Рассчитать" HorizontalAlignment="Left" Height="42" Margin="49,300,0,0" VerticalAlignment="Top" Width="182" Click="Button_Click" FontSize="20"/>
+        <TextBlock x:Name="VacationPeriodTextBox" HorizontalAlignment="Left" Margin="49,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="149" Width="182" FontSize="36" FontWeight="Bold" TextAlignment="Center">
             <TextBlock.Foreground>
                 <RadialGradientBrush>
                     <GradientStop Color="#FF3D22E8" Offset="0"/>
@@ -40,19 +40,16 @@
         </TextBlock>
         <Label Content="Первый день отпуска" HorizontalAlignment="Left" Height="28" Margin="49,38,0,0" VerticalAlignment="Top" Width="418"/>
         <Label Content="Последний день отпуска" HorizontalAlignment="Left" Height="28" Margin="49,139,0,0" VerticalAlignment="Top" Width="418"/>
-        <Label Content="Длительность отпуска" HorizontalAlignment="Left" Height="28" Margin="49,484,0,0" VerticalAlignment="Top" Width="418"/>
-        <Label Content="Праздничные дни" HorizontalAlignment="Left" Height="28" Margin="49,241,0,0" VerticalAlignment="Top" Width="268"/>
-        <ListView HorizontalAlignment="Left" Height="129" Margin="257,313,0,0" VerticalAlignment="Top" Width="225">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastHolidayMounth}" Width="120">последний месяц</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastHolidayYear}" Width="100">год</GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="AddHolidaysButton" Content="Добавить" HorizontalAlignment="Left" Height="30" Margin="257,274,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
-        <Button x:Name="RemoveHolidaysButton_Copy" Content="Исключить" HorizontalAlignment="Left" Height="30" Margin="409,271,0,0" VerticalAlignment="Top" Width="73" Click="Button_Click"/>
-        <Calendar x:Name="HolidayCalendar" HorizontalAlignment="Left" Margin="52,274,0,0" VerticalAlignment="Top" DisplayDate="01.2020" SelectionMode="MultipleRange"/>
+        <Label Content="Длительность отпуска" HorizontalAlignment="Left" Height="28" Margin="49,272,0,0" VerticalAlignment="Top" Width="418"/>
+        <Label Content="Количество праздничных дней, попавших в отпускной период:" HorizontalAlignment="Left" Height="28" Margin="49,515,0,0" VerticalAlignment="Top" Width="418"/>
+        <TextBlock x:Name="HolydaysTextBox" HorizontalAlignment="Left" Margin="49,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="182" FontSize="26" FontWeight="Bold" TextAlignment="Center">
+            <TextBlock.Foreground>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF3D22E8" Offset="0"/>
+                    <GradientStop Color="#FF527AE6" Offset="0.747"/>
+                </RadialGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
 
     </Grid>
 </Window>

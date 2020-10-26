@@ -1,22 +1,23 @@
-﻿<Window x:Class="AddHolidays4VTWPF.MainWindow"
+﻿<Window x:Name="HolidayForm" x:Class="AddHolidays4VTWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddHolidays4VTWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="325.825" Width="530.425">
+        Title="MainWindow" Height="325.825" Width="411.759" Closing="HolidayForm_Closing">
     <Grid>
-        <ListView x:Name="holidayList" HorizontalAlignment="Left" Height="247" Margin="257,10,0,0" VerticalAlignment="Top" Width="255">
+        <ListView x:Name="holidayList" HorizontalAlignment="Left" Height="247" Margin="257,10,0,0" VerticalAlignment="Top" Width="132" GotFocus="holidayList_GotFocus">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="addHolidaysButton" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="194,83,0,0" VerticalAlignment="Top" Width="58" Click="addHolidaysButton_Click"/>
-        <Button x:Name="addHolidaysButton_Copy" Content="Сохранить даты" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="179"/>
-        <Calendar x:Name="holidayCalendar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectionMode="MultipleRange" DisplayDate="2020-01"/>
+        <Button x:Name="addHolidaysButton" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="194,11,0,0" VerticalAlignment="Top" Width="58" Click="addHolidaysButton_Click"/>
+        <Button x:Name="saveHolidaysButton" Content="Сохранить даты" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="179" Click="saveHolidaysButton_Click" Height="74"/>
+        <Calendar x:Name="holidayCalendar" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" SelectionMode="MultipleRange" DisplayDate="2020-01"/>
+        <Button x:Name="removeHolidaysButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="194,36,0,0" VerticalAlignment="Top" Width="58" Click="removeHolidaysButton_Click" IsEnabled="False"/>
 
     </Grid>
 </Window>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AddHolidays4VTWPF;
 
 namespace VacationTimeWPF
 {
@@ -27,16 +28,13 @@ namespace VacationTimeWPF
             InitializeComponent();
             FirstDay.Text = DateTime.Now.ToString();
             FinishDay.Text = DateTime.Now.ToString();
-            
-            //загружаем из файла даты праздников 
-            if (LoadHolyDays("holidays.txt", out holydaysList))
+            if (Holydays.LoadHolyDays("holidays.txt", out List<string> fileHolydaysList))
             {
-                
+                foreach (string s in fileHolydaysList)
+                {
+                    holydaysList.Add(DateTime.Parse(s));
+                }               
             }
-            
-            
-            
-
 
         }
 
@@ -51,25 +49,40 @@ namespace VacationTimeWPF
                 FinishDay.Text = FirstDay.SelectedDate.ToString();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (var date in HolidayCalendar.SelectedDates)
-            {
-                holydaysList.Add(date);
-            }
-        }
+ 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        {            
+            int i0=0, iN=0, numHolydays=0;
+            DateTime startDate = (DateTime)FirstDay.SelectedDate;
+            DateTime finishDate=(DateTime)FinishDay.SelectedDate;
             VacationPeriodCalendar.DisplayDateStart = FirstDay.SelectedDate;
             VacationPeriodCalendar.DisplayDateEnd = FinishDay.SelectedDate;
             //производим операции с компонентами даты, 
             //добавляем 1 день, поскольку он включатеся в период отпуска
-            TimeSpan datePeriod = ((DateTime)FinishDay.SelectedDate).Date
-                        .AddDays(1)
-                        .Subtract(((DateTime)FirstDay.SelectedDate).Date);
+            
+            if (holydaysList.Count>0)
+            {
+                if (!(finishDate.Date < holydaysList.First().Date || startDate.Date > holydaysList.Last().Date))
+                {
+                    i0 = holydaysList.FindIndex(x => x >= startDate.Date);
+                        if (i0 == -1)
+                            i0 = 0;
+                    iN = holydaysList.FindLastIndex(x => x <= finishDate.Date);
+                        if (iN == -1)
+                            iN = holydaysList.Count-1;
+                    numHolydays = iN - i0+1;
+                    
+                }
+
+            }
+
+            TimeSpan datePeriod = finishDate.Date
+                        .AddDays(1-numHolydays)
+                        .Subtract((startDate).Date);
 
             VacationPeriodTextBox.Text = datePeriod.Days.ToString()
                 +"\n"+ RusDayDeclension(Int32.Parse(datePeriod.Days.ToString()));
+            HolydaysTextBox.Text = numHolydays.ToString()+" "+RusDayDeclension(Int32.Parse(numHolydays.ToString()));
         }
 
         private string RusDayDeclension(int dayNum)
@@ -85,40 +98,6 @@ namespace VacationTimeWPF
             return returnVal;
         }
 
-        private bool LoadHolyDays(string filePath, out List<DateTime> dates)
-        {
-            
-            dates = new List<DateTime>();            
-            string fileString;
-            try 
-            {
-                StreamReader srFile = new StreamReader(filePath);
-                while (!srFile.EndOfStream)
-                {
-                    fileString = srFile.ReadLine();
-                    dates.Add(DateTime.Parse(fileString));
-                }
-                return true;
-            }
-            catch (FileNotFoundException e)
-            {
-                return false;
-            }
-        }
-
-        private void SaveHolyDays(StreamWriter swFile, List<DateTime> dates)
-        {
-            try
-            {
-                foreach (DateTime date in dates)
-                {
-                    swFile.WriteLine(dates.ToString());
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
+        
     }
 }
